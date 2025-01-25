@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль сотрудника</title>
+    <link rel="stylesheet" href="visitor.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
+    <!-- FullCalendar -->
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\“Хвостики и лапки”.png" alt="Логотип" class="logo-image">
+            </div>
+            <button class="logout" onclick="logout()">Выход</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <button class="tab-button" onclick="openTab('profile')">Мой профиль</button>
+            <button class="tab-button" onclick="openTab('schedule')">График работы</button>
+        </aside>
+
+        <main class="content">
+            <!-- Блок "Мой профиль" -->
+            <section id="profile" class="section-content">
+                <h2 class="section-title">Мой профиль</h2>
+                <div class="personal-info">
+                    <div class="my-content">
+                        <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\фото.png" alt="Фотография Дмитриева Сергея Андреевича" class="profile-photo">
+                        <div class="my-details">
+                            <div class="info-row">
+                                <span class="info-label">ФИО:</span>
+                                <span class="info-value" contenteditable="false">Дмитриев Сергей Андреевич</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Телефон:</span>
+                                <span class="info-value" contenteditable="false">+7 (923) 789-26-54</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value" contenteditable="false">dmitriev@mail.ru</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Адрес:</span>
+                                <span class="info-value" contenteditable="false">г. Москва, ул. Удальцова, д. 77</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Должность:</span>
+                                <span class="info-value" contenteditable="false">Зоокинолог</span>
+                            </div>
+                            <button class="edit-button" onclick="toggleEdit(this)">Редактировать</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Блок "График работы" -->
+            <section id="schedule" class="section-content">
+                <h2 class="section-title">График работы</h2>
+                <div class="schedule-container">
+                    <div id="calendar"></div>
+                    <!-- Контейнер для календаря -->
+                </div>
+
+                <div id="task-modal">
+                    <div id="modal-title"></div>
+                    <!-- Заголовок задачи -->
+                    <div id="modal-description"></div>
+                    <!-- Описание задачи -->
+                    <button id="close-modal" onclick="closeModal()">Закрыть</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="visitor.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Инициализация календаря
+            $('#calendar').fullCalendar({
+                editable: true, // Возможность редактировать задачи
+                events: [{
+                        id: '1', // Уникальный идентификатор
+                        title: 'Прогулка с собакой',
+                        start: '2025-01-18T09:00:00',
+                        description: 'Прогулка с собакой в парке.',
+                    }, {
+                        id: '2',
+                        title: 'Вакцинация кошки',
+                        start: '2025-01-18T11:00:00',
+                        description: 'Введение вакцины против вирусных заболеваний.',
+                    }, {
+                        id: '3',
+                        title: 'Тренировка щенка',
+                        start: '2025-01-18T13:00:00',
+                        description: 'Базовая дрессировка и обучение команды "Сидеть".',
+                    },
+
+                    {
+                        id: '5',
+                        title: 'Осмотр собаки',
+                        start: '2025-01-20T15:00:00',
+                        description: 'Проверка общего состояния здоровья животного.',
+                    }
+                ],
+                eventClick: function(event) {
+                    // Открытие всплывающего окна с описанием задачи
+                    $('#modal-title').text(event.title);
+                    $('#modal-description').text(event.description);
+                    $('#task-modal').fadeIn();
+                },
+                eventDrop: function(event) {
+                    alert(
+                        "Задача '" +
+                        event.title +
+                        "' перенесена на: " +
+                        moment(event.start).format('YYYY-MM-DD HH:mm')
+                    );
+                }
+            });
+        });
+
+        // Закрытие модального окна
+        function closeModal() {
+            $('#task-modal').fadeOut();
+        }
+    </script>
+
+
+
+</body>
+
+</html>

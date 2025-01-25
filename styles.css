@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Основные стили */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    padding-top: 80px;
+}
+
+
+/* Верхняя панель */
+
+.header {
+    background-color: #251D20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 1.2s ease-out;
+    position: fixed;
+    /* Закрепляем меню */
+    top: 0;
+    /* Привязываем меню к верхней части экрана */
+    left: 0;
+    /* Обеспечиваем выравнивание слева */
+    width: 100%;
+    /* Ширина меню на всю ширину экрана */
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 20px;
+    /* Уменьшаем отступы внутри меню */
+    box-sizing: border-box;
+    /* Учитываем padding в общей ширине */
+}
+
+.header h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #FFD6F1;
+    margin: 0;
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #FFD6F1;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #007BFF;
+}
+
+.logo-image {
+    height: 50px;
+}
+
+
+/* Блок "О нас" */
+
+.about {
+    display: flex;
+    padding: 30px;
+    background-color: #FFE6F6;
+    margin: 0;
+    border-radius: 10px;
+}
+
+.about img {
+    width: 25%;
+    border-radius: 10px;
+}
+
+.about div {
+    padding: 0 20px;
+    width: 65%;
+}
+
+.about h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    color: #251D20;
+}
+
+.about p {
+    font-size: 25px;
+}
+
+.block h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #251D20;
+}
+
+
+/* Фотогалерея */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+    background-color: #FFE6F6;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.gallery1 {
+    padding: 40px;
+    margin: 0;
+    background-color: #FFE6F6;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.gallery1 h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #251D20;
+}
+
+.gallery1 .block {
+    padding: 20px;
+    text-align: center;
+    flex-basis: 30%;
+    margin-bottom: 20px;
+    background-color: #FFE6F6;
+}
+
+.gallery img:hover {
+    transform: scale(1.2);
+    /* Увеличение изображения */
+    transition: transform 0.3s ease;
+    /* Плавное увеличение */
+}
+
+
+/* Преимущества */
+
+.advantages {
+    padding: 40px;
+    background-color: white;
+    margin: 0;
+    border-radius: 10px;
+}
+
+.advantage-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.advantage {
+    text-align: center;
+    flex: 1;
+    padding: 10px 20px;
+}
+
+.advantage h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #251D20;
+}
+
+.advantage p {
+    font-size: 20px;
+    margin: 0;
+}
+
+.advantages h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #251D20;
+}
+
+.advantage .block {
+    padding: 20px;
+    text-align: center;
+    flex-basis: 30%;
+    margin-bottom: 20px;
+}
+
+
+/* Разделительная линия */
+
+.line {
+    width: 3px;
+    background: #241A14;
+    height: 100px;
+}
+
+
+/* Услуги */
+
+.services {
+    padding: 40px;
+    background-color: #fff;
+    margin: 0;
+    border-radius: 10px;
+}
+
+.service-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.service {
+    background: linear-gradient(135deg, #f9ddef, #fcc8e6);
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    margin: 0 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.service h3 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #251D20;
+}
+
+.service p {
+    font-size: 20px;
+    text-align: center;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #251D20;
+}
+
+.services .block {
+    padding: 20px;
+    text-align: center;
+    flex-basis: 30%;
+    margin-bottom: 20px;
+    border-bottom: 2px solid linear-gradient(135deg, #ff99cc, #ffcc99);
+    width: 30%;
+}
+
+.services .block:nth-child(n+4) {
+    width: 45%;
+}
+
+.service:hover {
+    background-color: #ffccff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+
+/* Фикс отступов */
+
+.service:first-child {
+    margin-left: 0;
+}
+
+.service:last-child {
+    margin-right: 0;
+}
+
+
+/* Отзывы */
+
+.reviews {
+    padding: 40px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.reviews h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #251D20;
+}
+
+.review-item {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border: 10px solid #574b51;
+    border-radius: 20px;
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.review-item p {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.review-item span {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    text-align: right;
+}
+
+.reviews .block {
+    padding: 20px;
+    text-align: center;
+    flex-basis: 30%;
+    margin-bottom: 20px;
+    border-bottom: 2px solid linear-gradient(135deg, #ff99cc, #ffcc99);
+}
+
+.about,
+.advantages,
+.services,
+.reviews,
+.gallery1 {
+    margin-bottom: 0;
+    /* Убираем отступы между блоками */
+}

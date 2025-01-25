@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Забронировать номер</title>
+    <link rel="stylesheet" href="book-room.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\“Хвостики и лапки”.png" alt="Логотип" class="logo-image">
+            </div>
+            <button class="logout" onclick="location.href='index.html'">Выход</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <button class="tab-button" onclick="location.href='visitor.html'">Мой профиль</button>
+            <button class="tab-button" data-tab="book-room">Забронировать номер</button>
+            <button class="tab-button" onclick="location.href='book-service.html'">Забронировать услугу</button>
+        </aside>
+
+        <main class="content">
+            <h2 class="section-title">Выберите номер</h2>
+
+            <div class="room-container">
+                <!-- Мини -->
+                <div class="room">
+                    <h3>Мини</h3>
+                    <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\мини.png" alt="Мини номер" class="room-image">
+                    <p>
+                        Площадь: 2,2 м²<br> Присмотр няни<br> Ежедневный фотоотчет<br> Уборка номера<br> Уход, кормление<br> Игры и ласки с питомцем<br> Цена: 500 ₽/сутки
+                    </p>
+                    <button class="book-button" onclick="openBookingForm('Мини')">Забронировать</button>
+                </div>
+
+                <!-- Стандарт -->
+                <div class="room">
+                    <h3>Стандарт</h3>
+                    <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\стандарт.png" alt="Стандарт номер" class="room-image">
+                    <p>
+                        Площадь: 3,5 м²<br> Присмотр няни<br> Ежедневный фотоотчет<br> Уборка номера<br> Уход, кормление<br> Игры и ласки с питомцем<br> Видеонаблюдение ~100 ₽<br> Цена: 1000 ₽/сутки
+                    </p>
+                    <button class="book-button" onclick="openBookingForm('Стандарт')">Забронировать</button>
+                </div>
+
+                <!-- Люкс -->
+                <div class="room">
+                    <h3>Люкс</h3>
+                    <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\люкс.png" alt="Люкс номер" class="room-image">
+                    <p>
+                        Площадь: 4,2 м²<br> Присмотр няни<br> Ежедневный фотоотчет<br> Уборка номера<br> Уход, кормление<br> Игры и ласки с питомцем<br> Бесплатное видеонаблюдение<br> Spa-процедуры
+                        <br> Цена: 1500 ₽/сутки
+                    </p>
+                    <button class="book-button" onclick="openBookingForm('Люкс')">Забронировать</button>
+                </div>
+            </div>
+
+            <!-- Форма бронирования -->
+            <div class="booking-form-container" id="bookingForm" style="display: none;">
+                <h3>Бронирование</h3>
+
+                <form id="bookingFormElement">
+                    <label>
+                        Дата заезда:
+                        <input type="date" id="checkInDate" required>
+                    </label>
+                    <label>
+                        Дата выезда:
+                        <input type="date" id="checkOutDate" required>
+                    </label>
+                    <input type="hidden" id="roomType" value="">
+                    <button type="submit">Забронировать</button>
+                </form>
+
+                <button onclick="closeBookingForm()">Закрыть</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Открытие формы бронирования
+        function openBookingForm(roomType) {
+            document.getElementById('bookingForm').style.display = 'block';
+            document.getElementById('roomType').value = roomType;
+        }
+
+        // Закрытие формы бронирования
+        function closeBookingForm() {
+            document.getElementById('bookingForm').style.display = 'none';
+        }
+
+        // Обработка формы бронирования
+        document.getElementById('bookingFormElement').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const checkIn = document.getElementById('checkInDate').value;
+            const checkOut = document.getElementById('checkOutDate').value;
+            const roomType = document.getElementById('roomType').value;
+
+            if (checkIn && checkOut) {
+                const reservationData = {
+                    checkIn,
+                    checkOut,
+                    roomType
+                };
+                localStorage.setItem('reservedRoom', JSON.stringify(reservationData));
+
+                alert(`Номер "${roomType}" забронирован с ${checkIn} по ${checkOut}`);
+                closeBookingForm();
+            } else {
+                alert('Пожалуйста, заполните все поля.');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

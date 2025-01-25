@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль посетителя</title>
+    <link rel="stylesheet" href="visitor.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\“Хвостики и лапки”.png" alt="Логотип" class="logo-image">
+            </div>
+            <button class="logout" onclick="logout()">Выход</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <button class="tab-button" data-tab="profile">Мой профиль</button>
+            <button class="tab-button" onclick="location.href='book-room.html'">Забронировать номер</button>
+            <button class="tab-button" onclick="location.href='book-service.html'">Забронировать услугу</button>
+        </aside>
+
+        <main class="content">
+            <h2 class="section-title">Мой профиль</h2>
+
+            <section class="personal-info">
+                <h3>Личные данные</h3>
+                <div class="info-row">
+                    <span class="info-label">ФИО:</span>
+                    <span class="info-value" contenteditable="false">Петрова Анастасия Сергеевна</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Телефон:</span>
+                    <span class="info-value" contenteditable="false">+7 (916) 789-12-34</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value" contenteditable="false">petrovaa@mail.ru</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Адрес:</span>
+                    <span class="info-value" contenteditable="false">г. Москва, ул. Ленина, д. 15, кв. 12</span>
+                </div>
+                <button class="edit-button" onclick="toggleEdit(this)">Редактировать</button>
+            </section>
+
+            <section class="pet-info">
+                <h3 class="section-title">Мой питомец</h3>
+                <div class="pet-content">
+                    <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\собака.jpg" alt="Фото питомца" class="pet-image">
+                    <div class="pet-details">
+                        <div class="info-row">
+                            <span class="info-label">Кличка:</span>
+                            <span class="info-value">Барни</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Порода:</span>
+                            <span class="info-value">Мальтипу</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Возраст:</span>
+                            <span class="info-value">7 месяцев</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Особенности ухода:</span>
+                            <span class="info-value">Использование шампуня для гипоаллергенных пород при купании.</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Медицинская информация:</span>
+                            <span class="info-value">Склонность к аллергиям: требуется исключить продукты с пшеницей и кукурузой.</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="edit-button" onclick="toggleEdit(this)">Редактировать</button>
+            </section>
+
+
+
+
+            <section class="reservations">
+                <div class="reservation-box">
+                    <h3 class="reservation-title">Забронированный номер</h3>
+                    <p>Номер: —</p>
+                    <p>Даты: —</p>
+                </div>
+                <div class="reservation-box" id="services-box">
+                    <h3 class="reservation-title">Забронированные услуги</h3>
+                    <ul id="services-list" class="services-list"></ul>
+                </div>
+
+
+            </section>
+        </main>
+    </div>
+
+    <script src="visitor.js"></script>
+    <script>
+        // Отображение данных о забронированном номере
+        function displayReservedRoom() {
+            const reservedRoom = JSON.parse(localStorage.getItem("reservedRoom"));
+
+            if (reservedRoom) {
+                const reservationBox = document.querySelector(".reservations .reservation-box:first-child");
+                reservationBox.innerHTML = `
+            <h3 class="reservation-title">Забронированный номер</h3>
+            <p>Тип номера: ${reservedRoom.roomType}</p>
+            <p>Даты: ${reservedRoom.checkIn} — ${reservedRoom.checkOut}</p>
+            <button class="edit-reservation">Удалить бронь</button>
+        `;
+
+                // Добавляем обработчик для кнопки "Удалить бронь"
+                const editButton = reservationBox.querySelector('.edit-reservation');
+                editButton.addEventListener('click', deleteReservation);
+            }
+        }
+
+
+        // Вызов функции при загрузке страницы
+        document.addEventListener("DOMContentLoaded", displayReservedRoom);
+    </script>
+
+</body>
+
+</html>

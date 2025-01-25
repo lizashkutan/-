@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Забронировать услуги</title>
+    <link rel="stylesheet" href="book-room.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="C:\Users\Елизавета\OneDrive\Рабочий стол\2\“Хвостики и лапки”.png" alt="Логотип" class="logo-image">
+            </div>
+            <button class="logout" onclick="location.href='index.html'">Выход</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <button class="tab-button" onclick="location.href='visitor.html'">Мой профиль</button>
+            <button class="tab-button" onclick="location.href='book-room.html'">Забронировать номер</button>
+            <button class="tab-button" onclick="location.href='book-service.html'">Забронировать услугу</button>
+        </aside>
+
+        <main class="content">
+            <h1 class="section-title">Выберите услуги</h1>
+            <div class="services-container">
+                <!-- Услуги -->
+                <div class="service-box">
+                    <h3>Индивидуальные прогулки на свежем воздухе</h3>
+                    <p>Прогулка с вашим питомцем в парке или на огороженной территории.</p>
+                    <button onclick="addService('Индивидуальные прогулки на свежем воздухе')">Забронировать</button>
+                </div>
+                <div class="service-box">
+                    <h3>Вакцинация</h3>
+                    <p>Вакцинация от ведущих ветеринаров для защиты здоровья вашего питомца.</p>
+                    <button onclick="addService('Вакцинация')">Забронировать</button>
+                </div>
+                <div class="service-box">
+                    <h3>Занятия по дрессировке</h3>
+                    <p>Индивидуальные занятия с профессиональным кинологом.</p>
+                    <button onclick="addService('Занятия по дрессировке')">Забронировать</button>
+                </div>
+                <div class="service-box">
+                    <h3>Релакс-терапия для снятия стресса</h3>
+                    <p>Массаж и процедуры для расслабления вашего питомца.</p>
+                    <button onclick="addService('Релакс-терапия для снятия стресса')">Забронировать</button>
+                </div>
+                <div class="service-box">
+                    <h3>Трансфер питомца</h3>
+                    <p>Транспортировка питомца из дома в гостиницу и обратно.</p>
+                    <button onclick="addService('Трансфер питомца')">Забронировать</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="book-service.js"></script>
+</body>
+
+</html>
